@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    next.style.marginTop = topValue;
+    next.style.top = topValue;
     f1Title.style.marginTop = top === 0 ? 'calc(100 / 428 * 100 * var(--vw))' : `${top}px`;
   };
   SafeAreaManager.init();
