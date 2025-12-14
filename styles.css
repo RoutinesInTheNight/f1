@@ -76,23 +76,75 @@ html {
 
 
 .f1-title {
-  width: calc(100 / 428 * 408 * var(--vw));
-  margin: 0 calc(100 / 428 * 10 * var(--vw));
+  /* width: calc(100 / 428 * 408 * var(--vw)); */
+  /* margin: 0 calc(100 / 428 * 10 * var(--vw)); */
   color: #e10600;
-  font-size: calc(100 / 428 * 48 * var(--vw));
+  font-size: calc(100 / 428 * 38 * var(--vw));
   font-family: 'F1 Bold', Arial, sans-serif;
-  margin-bottom: calc(100 / 428 * 32 * var(--vw));
+  margin-bottom: calc(100 / 428 * 16 * var(--vw));
+
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  /* gap: calc(100 / 428 * 8 * var(--vw)); */
 }
 
+
+
 .f1-title svg {
-  width: 100%;
+  margin-top: calc(100 / 428 * 7.5 * var(--vw));
+  width: 27%;
   fill: #e10600;
 }
 
-.f1-title span {
-  display: block;
-  text-align: center;
+
+
+
+
+.stack {
+  position: relative;
+  width: 20%;
+  margin-top: calc(100 / 428 * 7.5 * var(--vw));
 }
+
+.bar {
+  height: calc(100 / 428 * 13 * var(--vw));
+  background: #e10600;
+  margin-bottom: calc(100 / 428 * 2.21 * var(--vw));
+}
+
+.bar.big {
+  width: 100%;
+  clip-path: polygon(0 0,
+      100% 0,
+      calc(100% - calc(100 / 428 * 13.5 * var(--vw))) 100%,
+      0 100%);
+}
+
+.bar.small {
+  width: 81%;
+  clip-path: polygon(0 0,
+      100% 0,
+      calc(100% - calc(100 / 428 * 13.5 * var(--vw))) 100%,
+      0 100%);
+}
+
+
+.stack-r {
+  transform: rotate(180deg);
+  margin-top: calc(100 / 428 * 5.5 * var(--vw));
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -130,13 +182,16 @@ html {
 }
 
 .next {
+  width: calc(100 * var(--vw));
   position: fixed;
   top: 0;
-  background: #5a0200;
-  padding: calc(100 / 428 * 8 * var(--vw)) 0 calc(100 / 428 * 8 * var(--vw)) 0;
-  width: calc(100 / 428 * 414 * var(--vw));
-  margin: 0 calc(100 / 428 * 6 * var(--vw)) 0 calc(100 / 428 * 6 * var(--vw));
-  border: calc(100 / 428 * 2 * var(--vw)) solid #e10600;
+  background: #111017;
+  padding: 0 0 calc(100 / 428 * 8 * var(--vw)) 0;
+  margin: 0;
+  /* margin: 0 calc(100 / 428 * 6 * var(--vw)) 0 calc(100 / 428 * 6 * var(--vw)); */
+  border-bottom: calc(100 / 428 * 2 * var(--vw)) solid #e10600;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .next .title {
