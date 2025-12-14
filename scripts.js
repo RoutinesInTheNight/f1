@@ -107,13 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const bottomValue = bottom === 0 ? 'calc((100 / 428) * 8 * var(--vw))' : `${bottom}px`;
     const topValue = top === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${top}px`;
 
-    const huy = next.querySelector('.title span');
-    huy.textContent = `${top}px`;
-
-
-
     next.style.top = topValue;
-    f1Title.style.marginTop = top === 0 ? '0' : `${top}px`;
+    f1Title.style.marginTop = top === 0 ? `calc(100 / 428 * (73 + 16 + 8) * var(--vw))` : `calc(100 / 428 * (73 + 16) * var(--vw) + ${top}px)`;
   };
   SafeAreaManager.init();
 });
@@ -148,11 +143,6 @@ function showGrandPrixInfo(el) {
 
 
 const USER_GMT = -new Date().getTimezoneOffset() / 60;
-
-const MONTHS = [
-  "ЯНВАРЯ", "ФЕВРАЛЯ", "МАРТА", "АПРЕЛЯ", "МАЯ", "ИЮНЯ",
-  "ИЮЛЯ", "АВГУСТА", "СЕНТЯБРЯ", "ОКТЯБРЯ", "НОЯБРЯ", "ДЕКАБРЯ"
-];
 
 const MONTHS_SHORT = [
   "ЯНВ", "ФЕВ", "МАР", "АПР", "МАЯ", "ИЮН",
@@ -295,6 +285,62 @@ fetch("data.json")
 
       prevRaceUnix = gp.schedule["5"];
     });
+
+
+
+
+
+
+
+
+    const next = getNextRace(data);
+    if (next) {
+      const nextGp = document.querySelector(".next");
+      nextGp.innerHTML = "";
+
+      // Получаем дату и время с учётом GMT
+      const d = toUserDate(next.unix, USER_GMT);
+
+      // Названия сессий
+      const normalNames = [
+        "1-Я ПРАКТИКА",
+        "2-Я ПРАКТИКА",
+        "3-Я ПРАКТИКА",
+        "КВАЛИФИКАЦИЯ",
+        "ГОНКА"
+      ];
+      const sprintNames = [
+        "1-Я ПРАКТИКА",
+        "СПРИНТ-КВАЛИФИКАЦИЯ",
+        "СПРИНТ",
+        "КВАЛИФИКАЦИЯ",
+        "ГОНКА"
+      ];
+      const raceNames = next.isSprint ? sprintNames : normalNames;
+
+      nextGp.innerHTML = `
+        <div class="title">
+            <span>${raceNames[next.idx - 1]} - ${d.day} ${MONTHS_SHORT[d.month]} (${WEEKDAYS[d.weekday]}) ${d.time}</span>
+        </div>
+        <div class="card">
+            <div class="num">
+                <span>${next.gpKey}</span>
+                ${next.isSprint && next.gp.sprint_num ? `<span class="sprint-num">${next.gp.sprint_num}</span>` : ""}
+            </div>
+            <div class="flag">
+                <img src="flags/${next.gp.svg}.svg" alt="flag">
+            </div>
+            <div class="country-date">
+                <span>${next.gp.name.ru}</span>
+                <span class="countdown">00д 00ч 00м 00с</span>
+            </div>
+        </div>
+    `;
+
+      content.appendChild(nextGp);
+
+      startCountdown(next.unix, nextGp.querySelector(".countdown"));
+    }
   });
 
 
@@ -313,3 +359,76 @@ function toUserDate(unix, userGmt) {
 function pad(n) {
   return n < 10 ? "0" + n : n;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function getNextRace(data) {
+  const nowUnix = Math.floor(Date.now() / 1000);
+  let nextRace = null;
+
+  Object.entries(data).forEach(([gpKey, gp]) => {
+    const isSprint = gp.sprint_num !== null;
+    const scheduleEntries = Object.entries(gp.schedule); // [['1', ts], ...]
+
+    scheduleEntries.forEach(([idx, ts]) => {
+      if (ts > nowUnix) {
+        if (!nextRace || ts < nextRace.unix) {
+          nextRace = {
+            gpKey,
+            gp,
+            idx: Number(idx),
+            unix: ts,
+            isSprint
+          };
+        }
+      }
+    });
+  });
+
+  return nextRace;
+}
+
+
+
+
+
+
+function startCountdown(unix, el) {
+    function update() {
+        const now = Math.floor(Date.now() / 1000);
+        let diff = unix - now;
+        if (diff < 0) diff = 0;
+
+        const days = Math.floor(diff / 86400);
+        const hours = Math.floor((diff % 86400) / 3600);
+        const minutes = Math.floor((diff % 3600) / 60);
+        const seconds = diff % 60;
+
+        el.textContent = `${days}д ${hours}ч ${minutes}м ${seconds}с`;
+    }
+
+    update();
+    setInterval(update, 1000);
+}
+
