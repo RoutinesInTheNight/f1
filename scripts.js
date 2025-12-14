@@ -65,6 +65,15 @@ const SafeAreaManager = (() => {
     };
   }
 
+  function getIndividualSafeAreas() {
+    return {
+      safeAreaTop,
+      safeAreaBottom,
+      contentSafeAreaTop,
+      contentSafeAreaBottom
+    };
+  }
+
   function updateFromTelegram() {
     const content = telegram.contentSafeAreaInset || {};
     const system = telegram.safeAreaInset || {};
@@ -79,7 +88,11 @@ const SafeAreaManager = (() => {
     const updateAndNotify = () => {
       updateFromTelegram();
       if (typeof SafeAreaManager.onChange === 'function') {
-        SafeAreaManager.onChange(getTotalSafeAreas());
+        // Передаем и сумму, и отдельные значения
+        SafeAreaManager.onChange({
+          total: getTotalSafeAreas(),
+          individual: getIndividualSafeAreas()
+        });
       }
     };
 
@@ -91,9 +104,11 @@ const SafeAreaManager = (() => {
   return {
     init,
     getTotalSafeAreas,
+    getIndividualSafeAreas,
     onChange: null
   };
 })();
+
 
 
 
@@ -103,12 +118,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const next = document.querySelector('.next');
   const content = document.getElementById('content');
 
-  SafeAreaManager.onChange = ({ top, bottom }) => {
+  SafeAreaManager.onChange = ({ total, individual }) => {
+    const { top, bottom } = total;
+    const { safeAreaTop, contentSafeAreaTop } = individual;
+
     const bottomValue = bottom === 0 ? 'calc((100 / 428) * 8 * var(--vw))' : `${bottom}px`;
     const topValue = top === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${top}px`;
 
     content.style.marginTop = top === 0 ? 'calc(100 / 428 * (48 + 8 + 126) * var(--vw))' : `calc(100 / 428 * (48 + 126) * var(--vw) + ${top}px)`;
-    next.style.paddingTop = topValue;
+    content.style.paddingBottom = bottom === 0 ? 'calc((100 / 428) * 48 * var(--vw))' : `${bottom * 2}px`;
+
+    if (top === 0) next.style.paddingTop = topValue;
+    else {
+      next.style.paddingTop = `calc(${safeAreaTop}px + (${contentSafeAreaTop}px - 100 / 428 * 22.5 * var(--vw) / 2))`;
+    }
+
+
   };
   SafeAreaManager.init();
 });
@@ -431,20 +456,20 @@ function getNextRace(data) {
 
 
 function startCountdown(unix, el) {
-    function update() {
-        const now = Math.floor(Date.now() / 1000);
-        let diff = unix - now;
-        if (diff < 0) diff = 0;
+  function update() {
+    const now = Math.floor(Date.now() / 1000);
+    let diff = unix - now;
+    if (diff < 0) diff = 0;
 
-        const days = Math.floor(diff / 86400);
-        const hours = Math.floor((diff % 86400) / 3600);
-        const minutes = Math.floor((diff % 3600) / 60);
-        const seconds = diff % 60;
+    const days = Math.floor(diff / 86400);
+    const hours = Math.floor((diff % 86400) / 3600);
+    const minutes = Math.floor((diff % 3600) / 60);
+    const seconds = diff % 60;
 
-        el.textContent = `${days}д ${hours}ч ${minutes}м ${seconds}с`;
-    }
+    el.textContent = `${days}д ${hours}ч ${minutes}м ${seconds}с`;
+  }
 
-    update();
-    setInterval(update, 1000);
+  update();
+  setInterval(update, 1000);
 }
 
