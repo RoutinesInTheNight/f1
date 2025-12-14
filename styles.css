@@ -135,8 +135,7 @@ html {
   background: #5a0200;
   padding: calc(100 / 428 * 8 * var(--vw)) 0 calc(100 / 428 * 8 * var(--vw)) 0;
   width: calc(100 / 428 * 414 * var(--vw));
-  margin-left: calc(100 / 428 * 6 * var(--vw));
-  margin-right: calc(100 / 428 * 6 * var(--vw));
+  margin: 0 calc(100 / 428 * 6 * var(--vw)) 0 calc(100 / 428 * 6 * var(--vw));
   border: calc(100 / 428 * 2 * var(--vw)) solid #e10600;
 }
 

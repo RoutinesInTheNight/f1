@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bottomValue = bottom === 0 ? 'calc((100 / 428) * 8 * var(--vw))' : `${bottom}px`;
     const topValue = top === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${top}px`;
 
-    next.style.marginTop = topValue
+    next.style.marginTop = topValue;
     f1Title.style.marginTop = top === 0 ? 'calc(100 / 428 * 100 * var(--vw))' : `${top}px`;
   };
   SafeAreaManager.init();
