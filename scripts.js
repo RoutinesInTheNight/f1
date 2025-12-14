@@ -100,20 +100,20 @@ const SafeAreaManager = (() => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const next = document.querySelector('.next');
+  // const next = document.querySelector('.next');
   const f1Title = document.querySelector('.f1-title');
 
   SafeAreaManager.onChange = ({ top, bottom }) => {
     const bottomValue = bottom === 0 ? 'calc((100 / 428) * 8 * var(--vw))' : `${bottom}px`;
     const topValue = top === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${top}px`;
 
-    const huy = next.querySelector('.title span');
-    huy.textContent = `${top}px`;
+    // const huy = next.querySelector('.title span');
+    // huy.textContent = `${top}px`;
 
 
 
-    next.style.top = topValue;
-    f1Title.style.marginTop = top === 0 ? 'calc(100 / 428 * 100 * var(--vw))' : `${top}px`;
+    // next.style.top = topValue;
+    f1Title.style.marginTop = top === 0 ? '0' : `${top}px`;
   };
   SafeAreaManager.init();
 });
