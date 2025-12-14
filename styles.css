@@ -1,0 +1,249 @@
+@font-face {
+  font-family: 'Sf Pro Display Regular';
+  src: url('fonts/SFPRODISPLAYREGULAR.OTF') format('truetype')
+}
+
+@font-face {
+  font-family: 'Sf Pro Display Medium';
+  src: url('fonts/SFPRODISPLAYMEDIUM.OTF') format('truetype')
+}
+
+@font-face {
+  font-family: 'Sf Pro Display Bold';
+  src: url('fonts/SFPRODISPLAYBOLD.OTF') format('truetype')
+}
+
+@font-face {
+  font-family: 'F1 Bold';
+  src: url('fonts/F1-Bold.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Binggrae-Bold';
+  src: url('fonts/Binggrae-Bold.otf') format('truetype')
+}
+
+/* @font-face {
+  font-family: 'ZenDotsKir';
+  src: url('fonts/ZenDotsKir.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'PlayStation';
+  src: url('fonts/PlayStation.ttf') format('truetype')
+} */
+
+
+
+
+
+:root {
+  --body-width: 100vw;
+  --vw: calc(var(--body-width) / 100);
+}
+
+@media (min-width: 500px) {
+  :root {
+    --body-width: calc(100vh * 0.5);
+  }
+
+  body {
+    width: var(--body-width);
+  }
+}
+
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+}
+
+
+
+body {
+  background-color: black;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  height: 100vh;
+  margin: 0 auto;
+  /* scrollbar-width: none; */
+  /* -ms-overflow-style: none; */
+}
+
+/* body::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  overflow-x: hidden;
+  overflow: hidden;
+} */
+
+
+
+
+.grand-prix {
+  width: calc(100 / 428 * 408 * var(--vw));
+  margin: calc(100 / 428 * 16 * var(--vw)) calc(100 / 428 * 10 * var(--vw)) 0 calc(100 / 428 * 10 * var(--vw));
+  padding: 0 0 calc(100 / 428 * 16 * var(--vw)) 0;
+  background: #1c1c1e;
+  color: #fff;
+  font-family: 'Binggrae-Bold', Arial, sans-serif;
+  border-radius: calc(100 / 428 * 16 * var(--vw));
+}
+
+.title {
+  padding: calc(100 / 428 * 16 * var(--vw)) 0 0 0;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  font-size: calc(100 / 428 * 16 * var(--vw));
+  border-radius: calc(100 / 428 * 16 * var(--vw));
+}
+
+.sprint {
+  border-left: calc(100 / 428 * 4 * var(--vw)) solid #e10600;
+  margin-left: calc(100 / 428 * 6 * var(--vw));
+}
+
+.testing {
+  border-left: calc(100 / 428 * 4 * var(--vw)) solid #fff;
+  margin-left: calc(100 / 428 * 6 * var(--vw));
+}
+
+.title div {
+  text-align: center;
+  flex-shrink: 0;
+}
+
+
+.info {
+  padding: 0 calc(100 / 428 * 16 * var(--vw));
+  /* width: 100%; */
+  /* height: calc(100 / 428 * 100 * var(--vw)); */
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
+}
+
+.info.open {
+  max-height: 100vh;
+}
+
+.race {
+  font-size: calc(100 / 428 * 14 * var(--vw));
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  background: #515151;
+  border-radius: calc(100 / 428 * 12 * var(--vw));
+  padding: calc(100 / 428 * 4 * var(--vw)) 0;
+  /* font-family: 'ZenDotsKir', Arial, sans-serif; */
+  margin-top: calc(100 / 428 * 10 * var(--vw));
+}
+
+.race:first-child {
+  margin-top: calc(100 / 428 * 16 * var(--vw));
+}
+
+.race div {
+  width: 50%;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.race div:nth-child(2) {
+  border-left: calc(100 / 428 * 4 * var(--vw)) solid #1c1c1e;
+}
+
+
+.num {
+  width: 10%;
+  font-family: 'F1 Bold', Arial, sans-serif;
+}
+
+.num span {
+  display: block;
+}
+
+.sprint-num {
+  color: #e10600;
+}
+
+.flag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10%;
+}
+
+.flag img {
+  /* width: 10%; */
+  /* height: 8%; */
+  object-fit: cover;
+  border-radius: calc(100 / 428 * 8 * var(--vw));
+}
+
+.country-date {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 67.5%;
+  margin-left: 2.5%;
+}
+
+.country {
+  width: 40%;
+}
+
+.date {
+  width: 30%;
+}
+
+
+
+.show-grand-prix-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10%;
+  cursor: pointer;
+}
+
+.show-grand-prix-info svg {
+  width: calc(100 / 428 * 16 * var(--vw));
+  height: calc(100 / 428 * 16 * var(--vw));
+  transition: transform .5s ease;
+}
+
+
+
+
+/* Выпадающая часть */
+.details {
+  width: 700px;
+  background: #e5e5e5;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
+}
+
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+td:first-child {
+  width: 120px;
+  font-weight: bold;
+}
