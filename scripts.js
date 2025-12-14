@@ -134,6 +134,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    const huy1 = document.querySelector('.huy-1');
+    const huy2 = document.querySelector('.huy-2');
+    const huy3 = document.querySelector('.huy-3');
+    huy1.textContent = `${top}`;
+    huy2.textContent = `${safeAreaTop}`;
+    huy3.textContent = `${contentSafeAreaTop}`;
+
+
   };
   SafeAreaManager.init();
 });
