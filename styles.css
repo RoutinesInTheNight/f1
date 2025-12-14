@@ -58,6 +58,7 @@ body {
   overscroll-behavior: none;
   height: 100vh;
   margin: 0 auto;
+  font-family: 'MTSans-RegularCondensed', Arial, sans-serif;
   /* scrollbar-width: none; */
   /* -ms-overflow-style: none; */
 }
@@ -74,18 +75,43 @@ html {
 
 
 
+.f1-title {
+  width: calc(100 / 428 * 408 * var(--vw));
+  margin: 0 calc(100 / 428 * 10 * var(--vw));
+  color: #e10600;
+  font-size: calc(100 / 428 * 48 * var(--vw));
+  font-family: 'F1 Bold', Arial, sans-serif;
+  margin-bottom: calc(100 / 428 * 32 * var(--vw));
+}
+
+.f1-title svg {
+  width: 100%;
+  fill: #e10600;
+}
+
+.f1-title span {
+  display: block;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
 .waiting {
   display: flex;
   align-items: center;
   justify-content: right;
-  color: #85858C;
+  color: #515151;
   font-size: calc(100 / 428 * 12 * var(--vw));
-  font-family: 'MTSans-RegularCondensed', Arial, sans-serif;
-  margin: calc(100 / 428 * 4 * var(--vw)) calc(100 / 428 * 26 * var(--vw));
+  margin: calc(100 / 428 * 2 * var(--vw)) calc(100 / 428 * 26 * var(--vw));
 }
 
 .waiting svg {
-  fill: #85858C;
+  fill: #515151;
   width: calc(100 / 428 * 12 * var(--vw));
   height: calc(100 / 428 * 12 * var(--vw));
 }
@@ -100,11 +126,33 @@ html {
   padding: 0 0 calc(100 / 428 * 16 * var(--vw)) 0;
   background: #1c1c1e;
   color: #fff;
-  font-family: 'MTSans-RegularCondensed', Arial, sans-serif;
   border-radius: calc(100 / 428 * 16 * var(--vw));
 }
 
-.title {
+.next {
+  position: fixed;
+  top: 0;
+  background: #5a0200;
+  padding: calc(100 / 428 * 8 * var(--vw)) 0 calc(100 / 428 * 8 * var(--vw)) 0;
+  width: calc(100 / 428 * 414 * var(--vw));
+  margin-left: calc(100 / 428 * 6 * var(--vw));
+  margin-right: calc(100 / 428 * 6 * var(--vw));
+  border: calc(100 / 428 * 2 * var(--vw)) solid #e10600;
+}
+
+.next .title {
+  display: block;
+  text-align: center;
+  font-size: calc(100 / 428 * 18 * var(--vw));
+  color: #e10600;
+}
+
+.next .card {
+  padding: 0;
+}
+
+
+.card {
   padding: calc(100 / 428 * 16 * var(--vw)) 0 0 0;
   display: flex;
   align-items: center;
@@ -123,7 +171,7 @@ html {
   margin-left: calc(100 / 428 * 6 * var(--vw));
 }
 
-.title div {
+.card div {
   text-align: center;
   flex-shrink: 0;
 }
@@ -150,31 +198,6 @@ html {
 .show-grand-prix-info svg.open {
   transform: rotate(180deg);
 }
-
-/* .race {
-  font-size: calc(100 / 428 * 14 * var(--vw));
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  background: #515151;
-  border-radius: calc(100 / 428 * 12 * var(--vw));
-  padding: calc(100 / 428 * 4 * var(--vw)) 0;
-  margin-top: calc(100 / 428 * 10 * var(--vw));
-}
-
-.race:first-child {
-  margin-top: calc(100 / 428 * 16 * var(--vw));
-}
-
-.race div {
-  width: 50%;
-  text-align: center;
-  flex-shrink: 0;
-}
-
-.race div:nth-child(2) {
-  border-left: calc(100 / 428 * 4 * var(--vw)) solid #1c1c1e;
-} */
 
 
 .num {
@@ -213,12 +236,8 @@ html {
   margin-left: 2.5%;
 }
 
-.country {
-  width: 40%;
-}
-
-.date {
-  width: 30%;
+.next .country-date {
+  width: 75%;
 }
 
 
@@ -331,86 +350,4 @@ td:first-child {
   width: 25%;
   text-align: right;
   /* border-left: calc(100 / 428 * 2 * var(--vw)) solid #1c1c1e; */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.container {
-  padding: 0;
-  margin: 0;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.open-close {
-  cursor: pointer;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-
-  span {
-    display: inline-block;
-    background: #fff;
-    width: calc(100 / 428 * 12 * var(--vw));
-    height: calc(100 / 428 * 1.5 * var(--vw));
-    /* margin-top: 32px; */
-    position: absolute;
-    -webkit-border-radius: calc(100 / 428 * 1.5 * var(--vw));
-    -moz-border-radius: calc(100 / 428 * 1.5 * var(--vw));
-    border-radius: calc(100 / 428 * 1.5 * var(--vw));
-    -webkit-transition: all 0.35s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-
-    &:nth-child(1) {
-      transform: rotate(45deg) scale(1);
-      margin-left: calc(100 / 428 * -10 * var(--vw));
-    }
-
-    &:nth-child(2) {
-      transform: rotate(-45deg) scale(1);
-      margin-left: calc(100 / 428 * -2.5 * var(--vw));
-    }
-  }
-
-  &.clicked {
-    span {
-      scale: 1.25;
-      background: #e10600;
-
-      &:nth-child(1) {
-        margin-left: calc(100 / 428 * -6 * var(--vw));
-      }
-
-      &:nth-child(2) {
-        margin-left: calc(100 / 428 * -6 * var(--vw));
-      }
-    }
-  }
 }

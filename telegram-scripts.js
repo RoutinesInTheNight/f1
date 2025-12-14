@@ -96,14 +96,16 @@ const SafeAreaManager = (() => {
 
 
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   const description = document.querySelector('.description');
+document.addEventListener('DOMContentLoaded', () => {
+  const next = document.querySelector('.next');
+  const f1Title = document.querySelector('.f1-title');
 
-//   SafeAreaManager.onChange = ({ top, bottom }) => {
-//     const bottomValue = bottom === 0 ? 'calc((100 / 428) * 8 * var(--vw))' : `${bottom}px`;
-//     const topValue = top === 0 ? 'calc(100 / 428 * 16 * var(--vw))' : `${top}px`;
+  SafeAreaManager.onChange = ({ top, bottom }) => {
+    const bottomValue = bottom === 0 ? 'calc((100 / 428) * 8 * var(--vw))' : `${bottom}px`;
+    const topValue = top === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${top}px`;
 
-//     description.style.marginTop = topValue
-//   };
-//   SafeAreaManager.init();
-// });
+    next.style.marginTop = topValue
+    f1Title.style.marginTop = top === 0 ? 'calc(100 / 428 * 100 * var(--vw))' : `${top}px`;
+  };
+  SafeAreaManager.init();
+});

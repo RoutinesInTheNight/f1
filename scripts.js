@@ -1,5 +1,5 @@
 function showGrandPrixInfo(el) {
-  const info = el.closest('.title').nextElementSibling;
+  const info = el.closest('.card').nextElementSibling;
   info.classList.toggle('open');
   const showGrandPrixInfo = el.querySelector('.show-grand-prix-info svg');
   showGrandPrixInfo.classList.toggle('open');
@@ -79,7 +79,7 @@ fetch("data.json")
       grandPrix.className = "grand-prix" + (isSprint ? " sprint" : "");
 
       grandPrix.innerHTML = `
-                <div class="title" onclick="showGrandPrixInfo(this); hapticFeedback('soft')">
+                <div class="card" onclick="showGrandPrixInfo(this); hapticFeedback('soft')">
                     <div class="num">
                         <span>${key}</span>
                         ${isSprint ? `<span class="sprint-num">${gp.sprint_num}</span>` : ""}
