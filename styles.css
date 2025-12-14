@@ -180,7 +180,7 @@ html {
 }
 
 .flag img {
-  /* width: 10%; */
+  width: 100%;
   /* height: 8%; */
   object-fit: cover;
   border-radius: calc(100 / 428 * 8 * var(--vw));
