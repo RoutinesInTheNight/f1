@@ -123,6 +123,14 @@ html {
   max-height: 100vh;
 }
 
+.show-grand-prix-info svg {
+  transition: transform 0.3s ease;
+}
+
+.show-grand-prix-info svg.open {
+  transform: rotate(180deg);
+}
+
 /* .race {
   font-size: calc(100 / 428 * 14 * var(--vw));
   display: flex;

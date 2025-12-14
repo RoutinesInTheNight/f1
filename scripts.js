@@ -1,8 +1,8 @@
 function showGrandPrixInfo(el) {
   const info = el.closest('.title').nextElementSibling;
-  const openClose = el.querySelector('.open-close');
   info.classList.toggle('open');
-  openClose.classList.toggle('clicked');
+  const showGrandPrixInfo = el.querySelector('.show-grand-prix-info svg');
+  showGrandPrixInfo.classList.toggle('open');
 }
 
 
@@ -71,7 +71,7 @@ fetch("data.json")
                         <span>${dateRangeText}</span>
                     </div>
                     <div class="show-grand-prix-info">
-                        <div class="open-close"><span></span><span></span></div>
+                        <svg> <use href="#show-grand-prix-info-svg"></use></svg>
                     </div>
                 </div>
                 <div class="info">
