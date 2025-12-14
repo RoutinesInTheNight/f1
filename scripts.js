@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (top === 0) next.style.paddingTop = "0px";
     else {
-      next.style.paddingTop = `calc(${(contentSafeAreaTop - safeAreaTop) / 2 + safeAreaTop}px - (100 / 428 * (22.5 / 2 - 6) * var(--vw)))`;
+      next.style.paddingTop = `calc(${(contentSafeAreaTop - safeAreaTop) / 2 + safeAreaTop}px)`;
     }
 
 
