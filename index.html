@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <title>Горизонтальный блок</title>
     <link href="styles.css" rel="stylesheet" />
+        <script src="scripts.js"></script>
+    <script src="telegram-scripts.js"></script>
+    <script src="telegram-web-app.js"></script>
 </head>
 
 <body>
+
+
 
     <svg style="display: none;">
         <symbol id="show-grand-prix-info-svg" viewBox="0 0 512 512">
@@ -17,8 +22,11 @@
         </symbol>
     </svg>
 
+
+
+
     <div class="grand-prix testing">
-        <div class="title">
+        <div class="title" onclick="showGrandPrixInfo(this)">
             <div class="num">
                 <span>T1</span>
             </div>
@@ -29,11 +37,10 @@
                 <span>БАХРЕЙН</span>
                 <span>11 - 13 ФЕВ</span>
             </div>
-            <!-- <div class="show-grand-prix-info" onclick="showGrandPrixInfo('t1')">
-                    <svg>
-                        <use href="#show-grand-prix-info-svg"></use>
-                    </svg>
-                </div> -->
+
+            <div class="show-grand-prix-info">
+                <div class="open-close"><span></span><span></span></div>
+            </div>
         </div>
     </div>
 
@@ -61,7 +68,7 @@
 
 
 
-    <script src="scripts.js"></script>
+
 
 
 

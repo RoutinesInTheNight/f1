@@ -1,7 +1,14 @@
 function showGrandPrixInfo(el) {
   const info = el.closest('.title').nextElementSibling;
+  const openClose = el.querySelector('.open-close');
   info.classList.toggle('open');
+  openClose.classList.toggle('clicked');
 }
+
+
+
+
+
 
 
 
@@ -51,7 +58,7 @@ fetch("data.json")
       grandPrix.className = "grand-prix" + (isSprint ? " sprint" : "");
 
       grandPrix.innerHTML = `
-                <div class="title">
+                <div class="title" onclick="showGrandPrixInfo(this); hapticFeedback('soft')">
                     <div class="num">
                         <span>${key}</span>
                         ${isSprint ? `<span class="sprint-num">${gp.sprint_num}</span>` : ""}
@@ -63,10 +70,8 @@ fetch("data.json")
                         <span>${gp.name.ru}</span>
                         <span>${dateRangeText}</span>
                     </div>
-                    <div class="show-grand-prix-info" onclick="showGrandPrixInfo(this)">
-                        <svg>
-                            <use href="#show-grand-prix-info-svg"></use>
-                        </svg>
+                    <div class="show-grand-prix-info">
+                        <div class="open-close"><span></span><span></span></div>
                     </div>
                 </div>
                 <div class="info">
