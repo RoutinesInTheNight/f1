@@ -35,7 +35,28 @@ fetch("data.json")
     const content = document.getElementById("content");
     content.innerHTML = "";
 
+    let prevRaceUnix = null;
+
     Object.entries(data).forEach(([key, gp]) => {
+
+      // ---------- ПЕРЕРЫВ МЕЖДУ ГОНКАМИ ----------
+      const firstSessionUnix = gp.schedule["1"];
+
+      if (prevRaceUnix !== null) {
+        const diffSeconds = firstSessionUnix - prevRaceUnix;
+        const diffWeeks = Math.round(diffSeconds / (7 * 24 * 3600));
+
+        const waiting = document.createElement("div");
+        waiting.className = "waiting";
+        waiting.innerHTML = `
+        <span>${diffWeeks} НЕД</span>
+        <svg><use href="#waiting-svg"></use></svg>
+    `;
+
+        content.appendChild(waiting);
+      }
+
+
       const isSprint = gp.sprint_num !== null;
 
       // ---------- ДАТЫ ----------
@@ -139,6 +160,8 @@ fetch("data.json")
       });
 
       content.appendChild(grandPrix);
+
+      prevRaceUnix = gp.schedule["5"];
     });
   });
 
