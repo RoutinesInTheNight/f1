@@ -130,16 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (top === 0) next.style.paddingTop = "0px";
     else {
-      next.style.paddingTop = `calc(${(contentSafeAreaTop - safeAreaTop) / 2 + safeAreaTop}px)`;
+      next.style.paddingTop = `calc(${(top - safeAreaTop) / 2 + safeAreaTop}px - (100 / 428 * (22.5 / 2 - 6) * var(--vw)))`;
     }
-
-
-    const huy1 = document.querySelector('.huy-1');
-    const huy2 = document.querySelector('.huy-2');
-    const huy3 = document.querySelector('.huy-3');
-    huy1.textContent = `${top}`;
-    huy2.textContent = `${safeAreaTop}`;
-    huy3.textContent = `${contentSafeAreaTop}`;
 
 
   };
