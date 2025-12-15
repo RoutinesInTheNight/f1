@@ -79,9 +79,9 @@ html {
   /* width: calc(100 / 428 * 408 * var(--vw)); */
   /* margin: 0 calc(100 / 428 * 10 * var(--vw)); */
   color: #e10600;
-  font-size: calc(100 / 428 * 30.4 * var(--vw));
+  font-size: calc(100 / 428 * 19 * var(--vw));
   font-family: 'F1 Bold', Arial, sans-serif;
-  margin-bottom: calc(100 / 428 * 12.8 * var(--vw));
+  margin-bottom: calc(100 / 428 * 8 * var(--vw));
 
   display: flex;
   align-items: start;
@@ -92,8 +92,8 @@ html {
 
 
 .f1-title svg {
-  margin-top: calc(100 / 428 * 6 * var(--vw));
-  width: 21.6%;
+  margin-top: calc(100 / 428 * 3.75 * var(--vw));
+  width: 13.5%;
   fill: #e10600;
 }
 
@@ -103,36 +103,36 @@ html {
 
 .stack {
   position: relative;
-  width: 30%;
-  margin-top: calc(100 / 428 * 6 * var(--vw));
+  width: 40%;
+  margin-top: calc(100 / 428 * 3.75 * var(--vw));
 }
 
 .bar {
-  height: calc(100 / 428 * 10.4 * var(--vw));
+  height: calc(100 / 428 * 6.5 * var(--vw));
   background: #e10600;
-  margin-bottom: calc(100 / 428 * 1.678 * var(--vw));
+  margin-bottom: calc(100 / 428 * 1.1 * var(--vw));
 }
 
 .bar.big {
   width: 100%;
   clip-path: polygon(0 0,
       100% 0,
-      calc(100% - calc(100 / 428 * 10.4 * var(--vw))) 100%,
+      calc(100% - calc(100 / 428 * 6.75 * var(--vw))) 100%,
       0 100%);
 }
 
 .bar.small {
-  width: 81%;
+  width: 95%;
   clip-path: polygon(0 0,
       100% 0,
-      calc(100% - calc(100 / 428 * 10.4 * var(--vw))) 100%,
+      calc(100% - calc(100 / 428 * 6.75 * var(--vw))) 100%,
       0 100%);
 }
 
 
 .stack-r {
   transform: rotate(180deg);
-  margin-top: calc(100 / 428 * 4.4 * var(--vw));
+  margin-top: calc(100 / 428 * 2.75 * var(--vw));
 }
 
 
