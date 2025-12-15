@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // next.style.marginTop = 'calc((100 / 428) * 48 * var(--vw))';
 
     f1Title.style.paddingTop = safeAreaTop === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${safeAreaTop}px`;
-    f1TitleImg.style.height = contentSafeAreaTop === 0 ? 'calc(100 / 428 * 12 * var(--vw))' : `${contentSafeAreaTop}px`;
+    f1TitleImg.style.height = contentSafeAreaTop === 0 ? 'calc(100 / 428 * 12 * var(--vw))' : `${contentSafeAreaTop - safeAreaTop}px`;
 
     // next.style.paddingTop = top === 0 ? topValue : `calc(${(top - safeAreaTop) / 2 + safeAreaTop}px - (100 / 428 * 6 * var(--vw)))`;
     // next.style.marginBottom = top === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${top}px`;
