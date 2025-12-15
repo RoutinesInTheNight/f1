@@ -78,15 +78,32 @@ html {
 .f1-title {
   /* width: calc(100 / 428 * 408 * var(--vw)); */
   /* margin: 0 calc(100 / 428 * 10 * var(--vw)); */
-  color: #e10600;
-  font-size: calc(100 / 428 * 19 * var(--vw));
-  font-family: 'F1 Bold', Arial, sans-serif;
+  /* color: #e10600; */
+  /* font-size: calc(100 / 428 * 19 * var(--vw)); */
+  /* font-family: 'F1 Bold', Arial, sans-serif; */
   margin-bottom: calc(100 / 428 * 8 * var(--vw));
 
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
+  /* display: flex; */
+  /* align-items: start; */
+  /* justify-content: space-between; */
   /* gap: calc(100 / 428 * 8 * var(--vw)); */
+  overflow: hidden;
+  /* обрезаем края */
+  display: flex;
+  justify-content: center;
+  /* центрируем по горизонтали */
+  align-items: center;
+  /* центрируем по вертикали */
+}
+
+.f1-title img {
+  height: calc(100 / 428 * 12 * var(--vw));
+  width: auto;
+  /* сохраняем пропорции */
+  object-fit: cover;
+  /* для надежности */
+  display: block;
+  /* убираем пробелы снизу */
 }
 
 
