@@ -116,6 +116,8 @@ const SafeAreaManager = (() => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const next = document.querySelector('.next');
+  const f1Title = document.querySelector('.f1-title');
+  const f1TitleImg = document.querySelector('.f1-title-img');
   const content = document.getElementById('content');
 
   SafeAreaManager.onChange = ({ total, individual }) => {
@@ -128,7 +130,13 @@ document.addEventListener('DOMContentLoaded', () => {
     content.style.marginTop = top === 0 ? 'calc(100 / 428 * (48 + 8 + 126) * var(--vw))' : `calc(100 / 428 * (48 + 126) * var(--vw) + ${top}px)`;
     content.style.paddingBottom = bottom === 0 ? 'calc((100 / 428) * 48 * var(--vw))' : `${bottom * 2}px`;
 
-    next.style.paddingTop = top === 0 ? topValue : `calc(${(top - safeAreaTop) / 2 + safeAreaTop}px - (100 / 428 * 6 * var(--vw)))`;
+    next.style.marginTop = top === 0 ? 'calc(100 / 428 * (8 + 12) * var(--vw))' : `${top}px`;
+    // next.style.marginTop = 'calc((100 / 428) * 48 * var(--vw))';
+
+    f1Title.style.paddingTop = safeAreaTop === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${safeAreaTop}px`;
+    f1TitleImg.style.height = contentSafeAreaTop === 0 ? 'calc(100 / 428 * 12 * var(--vw))' : `${contentSafeAreaTop}px`;
+
+    // next.style.paddingTop = top === 0 ? topValue : `calc(${(top - safeAreaTop) / 2 + safeAreaTop}px - (100 / 428 * 6 * var(--vw)))`;
     // next.style.marginBottom = top === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${top}px`;
 
 
@@ -194,8 +202,8 @@ fetch("data.json")
         const waiting = document.createElement("div");
         waiting.className = "waiting";
         waiting.innerHTML = `
-        <span>${diffWeeks} НЕД</span>
         <svg><use href="#waiting-svg"></use></svg>
+        <span>${diffWeeks} НЕД</span>
     `;
 
         content.appendChild(waiting);
@@ -342,9 +350,6 @@ fetch("data.json")
       const raceNames = next.isSprint ? sprintNames : normalNames;
 
       nextGp.innerHTML = `
-        <div class="f1-title">
-          <img src="img/f1-header.png">
-        </div>
         <div class="title">
             <span>${raceNames[next.idx - 1]} - ${d.day} ${MONTHS_SHORT[d.month]} (${WEEKDAYS[d.weekday]}) ${d.time}</span>
         </div>
