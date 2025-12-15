@@ -196,6 +196,11 @@ html {
   background: #1c1c1e;
   color: #fff;
   border-radius: calc(100 / 428 * 16 * var(--vw));
+
+    background-image: url('img/card-background.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .next {
@@ -230,6 +235,9 @@ html {
   box-sizing: border-box;
   font-size: calc(100 / 428 * 22 * var(--vw));
   border-radius: calc(100 / 428 * 16 * var(--vw));
+
+
+
 }
 
 .sprint {
@@ -371,7 +379,8 @@ td:first-child {
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  background: #515151;
+  /* background: linear-gradient(to right, rgba(81, 81, 81, .75), rgba(0, 0, 0, .75)); */
+  background: rgba(81, 81, 81, .75);
   /* padding: calc(100 / 428 * 4 * var(--vw)) calc(100 / 428 * 8 * var(--vw)); */
   padding-left: calc(100 / 428 * 8 * var(--vw));
   border-radius: calc(100 / 428 * 12 * var(--vw));
@@ -400,7 +409,7 @@ td:first-child {
   box-sizing: border-box;
   /* padding: 0 calc(100 / 428 * 8 * var(--vw)); */
   padding: calc(100 / 428 * 4 * var(--vw)) calc(100 / 428 * 8 * var(--vw)) calc(100 / 428 * 4 * var(--vw)) 0;
-  border-top: calc(100 / 428 * 1.5 * var(--vw)) solid #1c1c1e;
+  border-top: calc(100 / 428 * 1.5 * var(--vw)) solid rgba(255, 255, 255, .25);
 }
 
 .schedule .day .races .race:first-child {
