@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     content.style.marginTop = top === 0 ? 'calc(100 / 428 * (48 + 8 + 126) * var(--vw))' : `calc(100 / 428 * (48 + 126) * var(--vw) + ${top}px)`;
     content.style.paddingBottom = bottom === 0 ? 'calc((100 / 428) * 48 * var(--vw))' : `${bottom * 2}px`;
 
-    next.style.paddingTop = top === 0 ? topValue : `calc(${(top - safeAreaTop) / 2 + safeAreaTop}px - (100 / 428 * 12 * var(--vw)))`;
+    next.style.paddingTop = top === 0 ? topValue : `calc(${(top - safeAreaTop) / 2 + safeAreaTop}px - (100 / 428 * 6 * var(--vw)))`;
     // next.style.marginBottom = top === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${top}px`;
 
 
