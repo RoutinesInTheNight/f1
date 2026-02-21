@@ -299,52 +299,10 @@ fetch("data.json")
 
     const next = getNextRace(data);
     if (next) {
-      const nextGp = document.querySelector(".next");
-      nextGp.innerHTML = "";
-
-      // Получаем дату и время с учётом GMT
-      const d = toUserDate(next.unix, USER_GMT);
-
-      // Названия сессий
-      const normalNames = [
-        "1-Я ПРАКТИКА",
-        "2-Я ПРАКТИКА",
-        "3-Я ПРАКТИКА",
-        "КВАЛИФИКАЦИЯ",
-        "ГОНКА"
-      ];
-      const sprintNames = [
-        "1-Я ПРАКТИКА",
-        "СПРИНТ-КВАЛИФИКАЦИЯ",
-        "СПРИНТ",
-        "КВАЛИФИКАЦИЯ",
-        "ГОНКА"
-      ];
-      const raceNames = next.isSprint ? sprintNames : normalNames;
-
-      nextGp.innerHTML = `
-        <div class="title">
-            <span>${raceNames[next.idx - 1]} — ${d.day} ${MONTHS_SHORT[d.month]} (${WEEKDAYS[d.weekday]}) ${d.time}</span>
-        </div>
-        <div class="card">
-            <div class="num">
-                <span>${next.gpKey}</span>
-                ${next.isSprint && next.gp.sprint_num ? `<span class="sprint-num">${next.gp.sprint_num}</span>` : ""}
-            </div>
-            <div class="flag">
-                <img src="flags/${next.gp.svg}.svg" alt="flag">
-            </div>
-            <div class="country-date">
-                <span>${next.gp.name.ru}</span>
-                <span class="countdown">00д 00ч 00м 00с</span>
-            </div>
-        </div>
-    `;
-
-      content.appendChild(nextGp);
-
-      startCountdown(next.unix, nextGp.querySelector(".countdown"));
+      renderNextRace(next, data);
     }
+
+
   });
 
 
@@ -416,23 +374,102 @@ function getNextRace(data) {
 
 
 
+function renderNextRace(next, data) {
+  const nextGp = document.querySelector(".next");
+  nextGp.innerHTML = "";
+
+  const d = toUserDate(next.unix, USER_GMT);
+
+  const normalNames = [
+    "1-Я ПРАКТИКА",
+    "2-Я ПРАКТИКА",
+    "3-Я ПРАКТИКА",
+    "КВАЛИФИКАЦИЯ",
+    "ГОНКА"
+  ];
+
+  const sprintNames = [
+    "1-Я ПРАКТИКА",
+    "СПРИНТ-КВАЛИФИКАЦИЯ",
+    "СПРИНТ",
+    "КВАЛИФИКАЦИЯ",
+    "ГОНКА"
+  ];
+
+  const raceNames = next.isSprint ? sprintNames : normalNames;
+
+  nextGp.innerHTML = `
+    <div class="title">
+        <span>${raceNames[next.idx - 1]} — ${d.day} ${MONTHS_SHORT[d.month]} (${WEEKDAYS[d.weekday]}) ${d.time}</span>
+    </div>
+    <div class="card">
+        <div class="num">
+            <span>${next.gpKey}</span>
+            ${next.isSprint && next.gp.sprint_num ? `<span class="sprint-num">${next.gp.sprint_num}</span>` : ""}
+        </div>
+        <div class="flag">
+            <img src="flags/${next.gp.svg}.svg" alt="flag">
+        </div>
+        <div class="country-date">
+            <span>${next.gp.name.ru}</span>
+            <span class="countdown">--</span>
+        </div>
+    </div>
+  `;
+
+  startCountdown(next.unix, nextGp.querySelector(".countdown"), data);
+}
 
 
-function startCountdown(unix, el) {
+
+function startCountdown(targetUnix, element, data) {
+  let timer = null;
+
   function update() {
     const now = Math.floor(Date.now() / 1000);
-    let diff = unix - now;
-    if (diff < 0) diff = 0;
+    let diff = targetUnix - now;
+
+    // Если время прошло — перезапускаем виджет
+    if (diff <= 0) {
+      clearInterval(timer);
+
+      // заново ищем следующую дату и обновляем блок
+      const next = getNextRace(data);
+      if (next) {
+        renderNextRace(next); // вынеси твой текущий код рендера в эту функцию
+      }
+      return;
+    }
 
     const days = Math.floor(diff / 86400);
-    const hours = Math.floor((diff % 86400) / 3600);
-    const minutes = Math.floor((diff % 3600) / 60);
+    diff %= 86400;
+
+    const hours = Math.floor(diff / 3600);
+    diff %= 3600;
+
+    const minutes = Math.floor(diff / 60);
     const seconds = diff % 60;
 
-    el.textContent = `${days}д ${hours}ч ${minutes}м ${seconds}с`;
+    let text = "";
+
+    if (days > 0) {
+      // Больше 24 часов → дни, часы, минуты
+      text = `${days}д ${hours}ч ${minutes}м`;
+    } else if (hours > 0) {
+      // Меньше 24 часов → часы, минуты
+      text = `${hours}ч ${minutes}м`;
+    } else if (minutes > 0) {
+      // Меньше часа → только минуты
+      text = `${minutes}м`;
+    } else {
+      // Меньше минуты → секунды
+      text = `${seconds}с`;
+    }
+
+    element.textContent = text;
   }
 
   update();
-  setInterval(update, 1000);
+  timer = setInterval(update, 1000);
 }
 
