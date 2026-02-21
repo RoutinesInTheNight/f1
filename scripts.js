@@ -65,15 +65,6 @@ const SafeAreaManager = (() => {
     };
   }
 
-  function getIndividualSafeAreas() {
-    return {
-      safeAreaTop,
-      safeAreaBottom,
-      contentSafeAreaTop,
-      contentSafeAreaBottom
-    };
-  }
-
   function updateFromTelegram() {
     const content = telegram.contentSafeAreaInset || {};
     const system = telegram.safeAreaInset || {};
@@ -88,11 +79,7 @@ const SafeAreaManager = (() => {
     const updateAndNotify = () => {
       updateFromTelegram();
       if (typeof SafeAreaManager.onChange === 'function') {
-        // Передаем и сумму, и отдельные значения
-        SafeAreaManager.onChange({
-          total: getTotalSafeAreas(),
-          individual: getIndividualSafeAreas()
-        });
+        SafeAreaManager.onChange(getTotalSafeAreas());
       }
     };
 
@@ -104,46 +91,31 @@ const SafeAreaManager = (() => {
   return {
     init,
     getTotalSafeAreas,
-    getIndividualSafeAreas,
     onChange: null
   };
 })();
 
 
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
-  const next = document.querySelector('.next');
-  // const f1Title = document.querySelector('.f1-title');
-  // const f1TitleImg = document.querySelector('.f1-title-img');
   const content = document.getElementById('content');
+  const next = document.querySelector('.next');
 
-  SafeAreaManager.onChange = ({ total, individual }) => {
-    const { top, bottom } = total;
-    const { safeAreaTop, contentSafeAreaTop } = individual;
-
-    const bottomValue = bottom === 0 ? 'calc((100 / 428) * 8 * var(--vw))' : `${bottom}px`;
-    const topValue = top === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${top}px`;
+  SafeAreaManager.onChange = ({ top, bottom }) => {
+    // const bottomValue = bottom === 0 ? 'calc((100 / 428) * 8 * var(--vw))' : `${bottom}px`;
+    // const topValue = top === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${top}px`;
 
     content.style.marginTop = top === 0 ? 'calc(100 / 428 * (8 + 48 + 64) * var(--vw))' : `calc(100 / 428 * (48 + 64) * var(--vw) + ${top}px)`;
     content.style.paddingBottom = bottom === 0 ? 'calc((100 / 428) * 48 * var(--vw))' : `${bottom * 2}px`;
 
-    // next.style.marginTop = top === 0 ? 'calc(100 / 428 * (8 + 12) * var(--vw))' : `${top}px`;
-    next.style.paddingTop = top === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${safeAreaTop}px`;
-    // next.style.marginTop = 'calc((100 / 428) * 48 * var(--vw))';
-
-    // f1Title.style.paddingTop = safeAreaTop === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${safeAreaTop}px`;
-    // f1TitleImg.style.height = contentSafeAreaTop === 0 ? 'calc(100 / 428 * 12 * var(--vw))' : `${contentSafeAreaTop - safeAreaTop}px`;
-
-    // next.style.paddingTop = top === 0 ? topValue : `calc(${(top - safeAreaTop) / 2 + safeAreaTop}px - (100 / 428 * 6 * var(--vw)))`;
-    // next.style.marginBottom = top === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${top}px`;
-
-
+    next.style.paddingTop = top === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${top}px`;
   };
   SafeAreaManager.init();
 });
+
+
+
+
+
 
 
 
