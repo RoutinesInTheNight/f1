@@ -116,8 +116,8 @@ const SafeAreaManager = (() => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const next = document.querySelector('.next');
-  const f1Title = document.querySelector('.f1-title');
-  const f1TitleImg = document.querySelector('.f1-title-img');
+  // const f1Title = document.querySelector('.f1-title');
+  // const f1TitleImg = document.querySelector('.f1-title-img');
   const content = document.getElementById('content');
 
   SafeAreaManager.onChange = ({ total, individual }) => {
@@ -130,11 +130,12 @@ document.addEventListener('DOMContentLoaded', () => {
     content.style.marginTop = top === 0 ? 'calc(100 / 428 * (48 + 8 + 126) * var(--vw))' : `calc(100 / 428 * (48 + 126) * var(--vw) + ${top}px)`;
     content.style.paddingBottom = bottom === 0 ? 'calc((100 / 428) * 48 * var(--vw))' : `${bottom * 2}px`;
 
-    next.style.marginTop = top === 0 ? 'calc(100 / 428 * (8 + 12) * var(--vw))' : `${top}px`;
+    // next.style.marginTop = top === 0 ? 'calc(100 / 428 * (8 + 12) * var(--vw))' : `${top}px`;
+    next.style.paddingTop = top === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${safeAreaTop}px`;
     // next.style.marginTop = 'calc((100 / 428) * 48 * var(--vw))';
 
-    f1Title.style.paddingTop = safeAreaTop === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${safeAreaTop}px`;
-    f1TitleImg.style.height = contentSafeAreaTop === 0 ? 'calc(100 / 428 * 12 * var(--vw))' : `${contentSafeAreaTop - safeAreaTop}px`;
+    // f1Title.style.paddingTop = safeAreaTop === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${safeAreaTop}px`;
+    // f1TitleImg.style.height = contentSafeAreaTop === 0 ? 'calc(100 / 428 * 12 * var(--vw))' : `${contentSafeAreaTop - safeAreaTop}px`;
 
     // next.style.paddingTop = top === 0 ? topValue : `calc(${(top - safeAreaTop) / 2 + safeAreaTop}px - (100 / 428 * 6 * var(--vw)))`;
     // next.style.marginBottom = top === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${top}px`;
@@ -351,7 +352,7 @@ fetch("data.json")
 
       nextGp.innerHTML = `
         <div class="title">
-            <span>${raceNames[next.idx - 1]} - ${d.day} ${MONTHS_SHORT[d.month]} (${WEEKDAYS[d.weekday]}) ${d.time}</span>
+            <span>${raceNames[next.idx - 1]} — ${d.day} ${MONTHS_SHORT[d.month]} (${WEEKDAYS[d.weekday]}) ${d.time}</span>
         </div>
         <div class="card">
             <div class="num">

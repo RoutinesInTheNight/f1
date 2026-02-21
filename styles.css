@@ -1,7 +1,4 @@
-@font-face {
-  font-family: 'F1 Bold';
-  src: url('fonts/F1-Bold.ttf') format('truetype')
-}
+
 
 /* @font-face {
   font-family: 'Binggrae-Bold';
@@ -204,23 +201,25 @@ html {
   color: #fff;
   border-radius: calc(100 / 428 * 16 * var(--vw));
 
-  background-image: url('img/card-background.png');
+  /* background-image: url('img/card-background.png'); */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
 .next {
-  width: calc(100 * var(--vw));
+  /* width: calc(100 * var(--vw)); */
   position: fixed;
   top: 0;
   background: #111017;
-  padding: calc(100 / 428 * 8 * var(--vw)) 0;
+  padding: 0 calc(100 / 428 * 10 * var(--vw)) calc(100 / 428 * 8 * var(--vw)) calc(100 / 428 * 10 * var(--vw));
   margin: 0;
   /* margin: 0 calc(100 / 428 * 6 * var(--vw)) 0 calc(100 / 428 * 6 * var(--vw)); */
   border-bottom: calc(100 / 428 * 2 * var(--vw)) solid #e10600;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+
+  box-shadow: 0 0 calc(100 / 428 * 16 * var(--vw)) calc(100 / 428 * 4 * var(--vw)) rgba(0, 0, 0, 1);
 }
 
 .next .title {
@@ -232,6 +231,7 @@ html {
 
 .next .card {
   padding: 0;
+  grid-template-columns: 10% 10% 77.5%;
 }
 
 
@@ -253,6 +253,10 @@ html {
 .sprint {
   border-left: calc(100 / 428 * 4 * var(--vw)) solid #e10600;
   margin-left: calc(100 / 428 * 6 * var(--vw));
+}
+
+.sprint .card {
+  padding: calc(100 / 428 * 8 * var(--vw)) 0;
 }
 
 .testing {
@@ -294,8 +298,8 @@ html {
 
 .num {
   /* width: 10%; */
-  font-family: 'F1 Bold', Arial, sans-serif;
-  font-size: calc(100 / 428 * 18 * var(--vw));
+  font-family: 'MTSans-RegularCondensed', Arial, sans-serif;
+  font-size: calc(100 / 428 * 22 * var(--vw));
 }
 
 .num span {
@@ -304,6 +308,7 @@ html {
 
 .sprint-num {
   color: #e10600;
+  font-size: calc(100 / 428 * 18 * var(--vw));
 }
 
 .flag {
@@ -329,7 +334,7 @@ html {
 }
 
 .next .country-date {
-  width: 75%;
+  /* width: 75%; */
 }
 
 
