@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bottomValue = bottom === 0 ? 'calc((100 / 428) * 8 * var(--vw))' : `${bottom}px`;
     const topValue = top === 0 ? 'calc(100 / 428 * 8 * var(--vw))' : `${top}px`;
 
-    content.style.marginTop = top === 0 ? 'calc(100 / 428 * (48 + 8 + 126) * var(--vw))' : `calc(100 / 428 * (48 + 126) * var(--vw) + ${top}px)`;
+    content.style.marginTop = top === 0 ? 'calc(100 / 428 * (8 + 48 + 64) * var(--vw))' : `calc(100 / 428 * (48 + 64) * var(--vw) + ${top}px)`;
     content.style.paddingBottom = bottom === 0 ? 'calc((100 / 428) * 48 * var(--vw))' : `${bottom * 2}px`;
 
     // next.style.marginTop = top === 0 ? 'calc(100 / 428 * (8 + 12) * var(--vw))' : `${top}px`;
