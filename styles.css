@@ -50,7 +50,7 @@
 
 
 body {
-  background-color: black;
+  background: #111017;
   overflow-x: hidden;
   overscroll-behavior: none;
   height: 100vh;
@@ -197,7 +197,7 @@ html {
   width: calc(100 / 428 * 408 * var(--vw));
   margin: 0 calc(100 / 428 * 10 * var(--vw));
   /* padding: 0 0 calc(100 / 428 * 16 * var(--vw)) 0; */
-  background: #1c1c1e;
+  background: #000000;
   color: #fff;
   border-radius: calc(100 / 428 * 16 * var(--vw));
 
@@ -279,7 +279,7 @@ html {
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.4s ease;
-  background: linear-gradient(to bottom, rgba(30, 30, 30, 0), rgba(28, 28, 30, 1));
+  /* background: linear-gradient(to bottom, rgba(30, 30, 30, 0), rgba(28, 28, 30, 1)); */
   /* background: rgba(30, 30, 30, .75); */
   border-radius: 0 0 calc(100 / 428 * 16 * var(--vw)) calc(100 / 428 * 16 * var(--vw));
 }
@@ -399,7 +399,7 @@ td:first-child {
   align-items: center;
   box-sizing: border-box;
   /* background: linear-gradient(to right, rgba(81, 81, 81, .75), rgba(0, 0, 0, .75)); */
-  background: rgba(81, 81, 81, .75);
+  background: #19191F;
   /* padding: calc(100 / 428 * 4 * var(--vw)) calc(100 / 428 * 8 * var(--vw)); */
   padding-left: calc(100 / 428 * 8 * var(--vw));
   border-radius: calc(100 / 428 * 12 * var(--vw));
