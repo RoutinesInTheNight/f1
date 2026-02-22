@@ -210,7 +210,10 @@ html {
   /* width: calc(100 * var(--vw)); */
   position: fixed;
   top: 0;
-  background: #e10600;
+  /* background: #000; */
+  background: linear-gradient(to bottom, #000, #e10600);
+
+  
   padding: 0 calc(100 / 428 * 10 * var(--vw)) calc(100 / 428 * 8 * var(--vw)) calc(100 / 428 * 10 * var(--vw));
   margin: 0;
   /* margin: 0 calc(100 / 428 * 6 * var(--vw)) 0 calc(100 / 428 * 6 * var(--vw)); */
