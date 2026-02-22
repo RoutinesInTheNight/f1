@@ -196,6 +196,7 @@ html {
   margin: 0 calc(100 / 428 * 10 * var(--vw));
   /* padding: 0 0 calc(100 / 428 * 16 * var(--vw)) 0; */
   background: #151517;
+  
   color: #fff;
   border-radius: calc(100 / 428 * 16 * var(--vw));
 
@@ -247,7 +248,6 @@ html {
   box-sizing: border-box; */
   font-size: calc(100 / 428 * 22 * var(--vw));
   border-radius: calc(100 / 428 * 16 * var(--vw));
-
 
 
 }
@@ -422,6 +422,10 @@ td:first-child {
   margin-bottom: calc(100 / 428 * 16 * var(--vw));
 }
 
+.schedule .day:first-child {
+  margin-top: 0;
+}
+
 .schedule .day .date {
   width: 30%;
 }
@@ -438,7 +442,7 @@ td:first-child {
   box-sizing: border-box;
   /* padding: 0 calc(100 / 428 * 8 * var(--vw)); */
   padding: calc(100 / 428 * 4 * var(--vw)) calc(100 / 428 * 8 * var(--vw)) calc(100 / 428 * 4 * var(--vw)) 0;
-  border-top: calc(100 / 428 * 1.5 * var(--vw)) solid rgba(255, 255, 255, .25);
+  border-top: calc(100 / 428 * 2 * var(--vw)) solid #151517;
 }
 
 .schedule .day .races .race:first-child {
