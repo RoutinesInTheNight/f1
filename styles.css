@@ -1,5 +1,3 @@
-
-
 /* @font-face {
   font-family: 'Binggrae-Bold';
   src: url('fonts/Binggrae-Bold.otf') format('truetype')
@@ -50,7 +48,7 @@
 
 
 body {
-  background: #111017;
+  background-color: black;
   overflow-x: hidden;
   overscroll-behavior: none;
   height: 100vh;
@@ -176,14 +174,14 @@ html {
   display: flex;
   align-items: center;
   justify-content: right;
-  color: #515151;
+  color: #2B2B2F;
   font-size: calc(100 / 428 * 16 * var(--vw));
-  margin: calc(100 / 428 * 2 * var(--vw)) calc(100 / 428 * 50.797 * var(--vw));
+  margin: calc(100 / 428 * 4 * var(--vw)) calc(100 / 428 * 50.797 * var(--vw));
 }
 
 .waiting svg {
   transform: rotate(90deg);
-  fill: #515151;
+  fill: #2B2B2F;
   width: calc(100 / 428 * 16 * var(--vw));
   height: calc(100 / 428 * 16 * var(--vw));
   margin: 0 calc(100 / 428 * 2 * var(--vw)) calc(100 / 428 * 2 * var(--vw)) 0;
@@ -197,7 +195,7 @@ html {
   width: calc(100 / 428 * 408 * var(--vw));
   margin: 0 calc(100 / 428 * 10 * var(--vw));
   /* padding: 0 0 calc(100 / 428 * 16 * var(--vw)) 0; */
-  background: #000000;
+  background: #151517;
   color: #fff;
   border-radius: calc(100 / 428 * 16 * var(--vw));
 
@@ -211,11 +209,11 @@ html {
   /* width: calc(100 * var(--vw)); */
   position: fixed;
   top: 0;
-  background: #111017;
+  background: #e10600;
   padding: 0 calc(100 / 428 * 10 * var(--vw)) calc(100 / 428 * 8 * var(--vw)) calc(100 / 428 * 10 * var(--vw));
   margin: 0;
   /* margin: 0 calc(100 / 428 * 6 * var(--vw)) 0 calc(100 / 428 * 6 * var(--vw)); */
-  border-bottom: calc(100 / 428 * 2 * var(--vw)) solid #e10600;
+  border-bottom: calc(100 / 428 * 2 * var(--vw)) solid #fff;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 
@@ -228,11 +226,14 @@ html {
   text-align: center;
   font-size: calc(100 / 428 * 18 * var(--vw));
   color: #e10600;
+  background: #fff;
+  border-radius: calc(100 / 428 * 12 * var(--vw));
+  margin-bottom: calc(100 / 428 * 8 * var(--vw));
 }
 
 .next .card {
   padding: 0;
-  grid-template-columns: 10% 10% 77.5%;
+  /* grid-template-columns: 10% 10% 72.5% 7.5%; */
 }
 
 
@@ -340,12 +341,21 @@ html {
 
 
 
+.timer-next-race,
 .show-grand-prix-info {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* width: 10%; */
+}
+
+.show-grand-prix-info {
   cursor: pointer;
+}
+
+.timer-next-race svg {
+  width: calc(100 / 428 * 20 * var(--vw));
+  height: calc(100 / 428 * 20 * var(--vw));
+  fill: #fff;
 }
 
 .show-grand-prix-info svg {
@@ -399,7 +409,7 @@ td:first-child {
   align-items: center;
   box-sizing: border-box;
   /* background: linear-gradient(to right, rgba(81, 81, 81, .75), rgba(0, 0, 0, .75)); */
-  background: #19191F;
+  background: #2B2B2F;
   /* padding: calc(100 / 428 * 4 * var(--vw)) calc(100 / 428 * 8 * var(--vw)); */
   padding-left: calc(100 / 428 * 8 * var(--vw));
   border-radius: calc(100 / 428 * 12 * var(--vw));

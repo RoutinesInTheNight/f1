@@ -414,6 +414,9 @@ function renderNextRace(next, data) {
             <span>${next.gp.name.ru}</span>
             <span class="countdown">--</span>
         </div>
+        <div class="timer-next-race">
+            <svg><use href="#timer-svg"></use></svg>
+        </div>
     </div>
   `;
 
