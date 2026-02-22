@@ -239,7 +239,7 @@ html {
 
 .card {
   display: grid;
-  grid-template-columns: 10% 10% 70% 10%;
+  grid-template-columns: 10% 10% 72% 8%;
 
   padding: calc(100 / 428 * 16 * var(--vw)) 0;
   /* display: flex;
