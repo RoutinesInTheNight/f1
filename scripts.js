@@ -163,10 +163,6 @@ fetch("data.json")
 
     let prevRaceUnix = null;
     const now = Math.floor(Date.now() / 1000);
-    // const TEST_NOW = "2026-05-01 12:00:00";
-    // const now = TEST_NOW
-    //   ? Math.floor(new Date(TEST_NOW + " UTC").getTime() / 1000)
-    //   : Math.floor(Date.now() / 1000);
 
     // найдём следующую гонку заранее
     let nextRaceKey = null;
@@ -439,7 +435,24 @@ function renderNextRace(next, data) {
         </div>
         <div class="country-date">
             <span>${next.gp.name.ru}</span>
-            <span class="countdown">--</span>
+            <div class="countdown">
+                <div>
+                    <span>Д</span>
+                    <span id="timer-days">-</span>
+                </div>
+                <div>
+                    <span>Ч</span>
+                    <span id="timer-hours">-</span>
+                </div>
+                <div>
+                    <span>М</span>
+                    <span id="timer-minutes">-</span>
+                </div>
+                <div>
+                    <span>С</span>
+                    <span id="timer-seconds">-</span>
+                </div>
+            </div>
         </div>
         <div class="timer-next-race">
             <svg><use href="#timer-svg"></use></svg>
@@ -452,21 +465,26 @@ function renderNextRace(next, data) {
 
 
 
-function startCountdown(targetUnix, element, data) {
+function startCountdown(targetUnix, countdownEl, data) {
+  // Находим спаны внутри переданного контейнера
+  const elDays = countdownEl.querySelector("#timer-days");
+  const elHours = countdownEl.querySelector("#timer-hours");
+  const elMinutes = countdownEl.querySelector("#timer-minutes");
+  const elSeconds = countdownEl.querySelector("#timer-seconds");
+
   let timer = null;
 
   function update() {
     const now = Math.floor(Date.now() / 1000);
     let diff = targetUnix - now;
 
-    // Если время прошло — перезапускаем виджет
     if (diff <= 0) {
       clearInterval(timer);
 
-      // заново ищем следующую дату и обновляем блок
+      // Найти следующую гонку и обновить блок
       const next = getNextRace(data);
       if (next) {
-        renderNextRace(next); // вынеси твой текущий код рендера в эту функцию
+        renderNextRace(next, data);
       }
       return;
     }
@@ -480,23 +498,11 @@ function startCountdown(targetUnix, element, data) {
     const minutes = Math.floor(diff / 60);
     const seconds = diff % 60;
 
-    let text = "";
-
-    if (days > 0) {
-      // Больше 24 часов → дни, часы, минуты
-      text = `${days}д ${hours}ч ${minutes}м`;
-    } else if (hours > 0) {
-      // Меньше 24 часов → часы, минуты
-      text = `${hours}ч ${minutes}м`;
-    } else if (minutes > 0) {
-      // Меньше часа → только минуты
-      text = `${minutes}м`;
-    } else {
-      // Меньше минуты → секунды
-      text = `${seconds}с`;
-    }
-
-    element.textContent = text;
+    // Обновляем спаны, без ведущих нулей
+    elDays.textContent = days;
+    elHours.textContent = hours;
+    elMinutes.textContent = minutes;
+    elSeconds.textContent = seconds;
   }
 
   update();

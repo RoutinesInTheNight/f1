@@ -272,7 +272,7 @@ html {
 .next .title span {
   background: #e10600;
   border-radius: calc(100 / 428 * 8 * var(--vw));
-  font-size: calc(100 / 428 * 16 * var(--vw));
+  font-size: calc(100 / 428 * 18 * var(--vw));
   color: #fff;
   padding: 0 calc(100 / 428 * 16 * var(--vw));
 }
@@ -281,6 +281,40 @@ html {
   padding: 0;
   /* grid-template-columns: 10% 10% 72.5% 7.5%; */
 }
+
+
+.countdown {
+  display: grid;
+  grid-template-columns: 10% 10% 72% 8%;
+}
+
+
+
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, calc(100 / 428 * 22 * var(--vw)));
+  text-align: center;
+  gap: calc(100 / 428 * 4 * var(--vw));
+  font-size: calc(100 / 428 * 14 * var(--vw));
+}
+
+.countdown div {
+  display: flex;
+  flex-direction: column; /* верхний span над нижним */
+  align-items: center;    /* центр по горизонтали */
+}
+
+.countdown div span:last-child {
+  font-size: calc(100 / 428 * 18 * var(--vw));
+}
+
+/* countdown */
+
+
+
+
+
 
 
 .card {
