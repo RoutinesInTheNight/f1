@@ -70,6 +70,52 @@ html {
 
 
 
+
+
+
+
+/* html {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #121212;
+  background: linear-gradient(
+    135deg,
+    #111017 25%,
+    #19191F 25%,
+    #19191F 50%,
+    #111017 50%,
+    #111017 75%,
+    #19191F 75%,
+    #19191F
+  );
+  background-size: 100px 100px;
+}
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 100px;
+  }
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .f1-title {
   width: calc(100 * var(--vw));
   position: fixed;
@@ -118,39 +164,6 @@ html {
 
 
 
-.stack {
-  position: relative;
-  width: 40%;
-  margin-top: calc(100 / 428 * 3.75 * var(--vw));
-}
-
-.bar {
-  height: calc(100 / 428 * 6.5 * var(--vw));
-  background: #e10600;
-  margin-bottom: calc(100 / 428 * 1.1 * var(--vw));
-}
-
-.bar.big {
-  width: 100%;
-  clip-path: polygon(0 0,
-      100% 0,
-      calc(100% - calc(100 / 428 * 6.75 * var(--vw))) 100%,
-      0 100%);
-}
-
-.bar.small {
-  width: 95%;
-  clip-path: polygon(0 0,
-      100% 0,
-      calc(100% - calc(100 / 428 * 6.75 * var(--vw))) 100%,
-      0 100%);
-}
-
-
-.stack-r {
-  transform: rotate(180deg);
-  margin-top: calc(100 / 428 * 2.75 * var(--vw));
-}
 
 
 
@@ -196,7 +209,7 @@ html {
   margin: 0 calc(100 / 428 * 10 * var(--vw));
   /* padding: 0 0 calc(100 / 428 * 16 * var(--vw)) 0; */
   background: #151517;
-  
+
   color: #fff;
   border-radius: calc(100 / 428 * 16 * var(--vw));
 
@@ -206,6 +219,29 @@ html {
   background-size: cover;
 }
 
+.past-race {
+  opacity: 0.75;
+}
+
+.next-race {
+  /* border-bottom: calc(100 / 428 * 2 * var(--vw)) solid linear-gradient(to right, #e10600, #fff); */
+  border-top: calc(100 / 428 * 2 * var(--vw)) solid #e10600;
+  border-bottom: calc(100 / 428 * 2 * var(--vw)) solid #e10600;
+  border-left: calc(100 / 428 * 4 * var(--vw)) solid #e10600;
+  background: linear-gradient(to right, #000, #e10600);
+  margin-left: calc(100 / 428 * 6 * var(--vw));
+}
+
+.next-race .schedule .day {
+  background: rgba(255, 255, 255, .5);
+  color: #000
+}
+
+
+
+
+
+
 .next {
   /* width: calc(100 * var(--vw)); */
   position: fixed;
@@ -213,7 +249,7 @@ html {
   /* background: #000; */
   background: linear-gradient(to bottom, #000, #e10600);
 
-  
+
   padding: 0 calc(100 / 428 * 10 * var(--vw)) calc(100 / 428 * 8 * var(--vw)) calc(100 / 428 * 10 * var(--vw));
   margin: 0;
   /* margin: 0 calc(100 / 428 * 6 * var(--vw)) 0 calc(100 / 428 * 6 * var(--vw)); */
@@ -228,11 +264,17 @@ html {
 .next .title {
   display: block;
   text-align: center;
-  font-size: calc(100 / 428 * 18 * var(--vw));
-  color: #e10600;
-  background: #fff;
-  border-radius: calc(100 / 428 * 12 * var(--vw));
+  /* background: #fff; */
+  /* border-radius: calc(100 / 428 * 12 * var(--vw)); */
   margin-bottom: calc(100 / 428 * 8 * var(--vw));
+}
+
+.next .title span {
+  background: #e10600;
+  border-radius: calc(100 / 428 * 8 * var(--vw));
+  font-size: calc(100 / 428 * 16 * var(--vw));
+  color: #fff;
+  padding: 0 calc(100 / 428 * 16 * var(--vw));
 }
 
 .next .card {
@@ -258,6 +300,8 @@ html {
 .sprint {
   border-left: calc(100 / 428 * 4 * var(--vw)) solid #e10600;
   margin-left: calc(100 / 428 * 6 * var(--vw));
+  /* border-right: calc(100 / 428 * 4 * var(--vw)) solid #e10600;
+  margin-right: calc(100 / 428 * 6 * var(--vw)); */
 }
 
 .sprint .card {

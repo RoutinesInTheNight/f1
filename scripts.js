@@ -162,6 +162,20 @@ fetch("data.json")
     content.innerHTML = "";
 
     let prevRaceUnix = null;
+    const now = Math.floor(Date.now() / 1000);
+    // const TEST_NOW = "2026-05-01 12:00:00";
+    // const now = TEST_NOW
+    //   ? Math.floor(new Date(TEST_NOW + " UTC").getTime() / 1000)
+    //   : Math.floor(Date.now() / 1000);
+
+    // найдём следующую гонку заранее
+    let nextRaceKey = null;
+    for (const [key, gp] of Object.entries(data)) {
+      if (now <= gp.schedule["5"]) {
+        nextRaceKey = key;
+        break;
+      }
+    }
 
     Object.entries(data).forEach(([key, gp]) => {
 
@@ -175,15 +189,26 @@ fetch("data.json")
         const waiting = document.createElement("div");
         waiting.className = "waiting";
         waiting.innerHTML = `
-        <svg><use href="#waiting-svg"></use></svg>
-        <span>${diffWeeks} НЕД</span>
-    `;
-
+          <svg><use href="#waiting-svg"></use></svg>
+          <span>${diffWeeks} НЕД</span>
+        `;
         content.appendChild(waiting);
       }
 
-
       const isSprint = gp.sprint_num !== null;
+
+      // ---------- КЛАССЫ ГОНКИ ----------
+      let raceClass = "grand-prix";
+
+      if (now > gp.schedule["5"]) {
+        raceClass += " past-race";
+      } else if (key === nextRaceKey) {
+        raceClass += " next-race";
+      }
+
+      if (isSprint) {
+        raceClass += " sprint";
+      }
 
       // ---------- ДАТЫ ----------
       const scheduleDates = Object.values(gp.schedule).map(ts =>
@@ -202,29 +227,29 @@ fetch("data.json")
 
       // ---------- GRAND PRIX ----------
       const grandPrix = document.createElement("div");
-      grandPrix.className = "grand-prix" + (isSprint ? " sprint" : "");
+      grandPrix.className = raceClass;
 
       grandPrix.innerHTML = `
-                <div class="card" onclick="showGrandPrixInfo(this); hapticFeedback('soft')">
-                    <div class="num">
-                        <span>${key}</span>
-                        ${isSprint ? `<span class="sprint-num">${gp.sprint_num}</span>` : ""}
-                    </div>
-                    <div class="flag">
-                        <img src="flags/${gp.svg}.svg" alt="flag">
-                    </div>
-                    <div class="country-date">
-                        <span>${gp.name.ru}</span>
-                        <span>${dateRangeText}</span>
-                    </div>
-                    <div class="show-grand-prix-info">
-                        <svg> <use href="#show-grand-prix-info-svg"></use></svg>
-                    </div>
-                </div>
-                <div class="info">
-                    <div class="schedule"></div>
-                </div>
-            `;
+        <div class="card" onclick="showGrandPrixInfo(this); hapticFeedback('soft')">
+          <div class="num">
+            <span>${key}</span>
+            ${isSprint ? `<span class="sprint-num">${gp.sprint_num}</span>` : ""}
+          </div>
+          <div class="flag">
+            <img src="flags/${gp.svg}.svg" alt="flag">
+          </div>
+          <div class="country-date">
+            <span>${gp.name.ru}</span>
+            <span>${dateRangeText}</span>
+          </div>
+          <div class="show-grand-prix-info">
+            <svg><use href="#show-grand-prix-info-svg"></use></svg>
+          </div>
+        </div>
+        <div class="info">
+          <div class="schedule"></div>
+        </div>
+      `;
 
       const scheduleContainer = grandPrix.querySelector(".schedule");
 
@@ -232,12 +257,11 @@ fetch("data.json")
       const daysMap = {};
 
       scheduleDates.forEach((d, i) => {
-        const key = `${d.year}-${d.month}-${d.day}`;
-        if (!daysMap[key]) daysMap[key] = [];
-        daysMap[key].push({ index: i + 1, date: d });
+        const dayKey = `${d.year}-${d.month}-${d.day}`;
+        if (!daysMap[dayKey]) daysMap[dayKey] = [];
+        daysMap[dayKey].push({ index: i + 1, date: d });
       });
 
-      // ---------- НАЗВАНИЯ СЕССИЙ ----------
       const normalNames = [
         "1-Я ПРАКТИКА",
         "2-Я ПРАКТИКА",
@@ -256,7 +280,6 @@ fetch("data.json")
 
       const raceNames = isSprint ? sprintNames : normalNames;
 
-      // ---------- СОЗДАНИЕ ДНЕЙ ----------
       Object.values(daysMap).forEach(dayEvents => {
         const d = dayEvents[0].date;
 
@@ -264,11 +287,11 @@ fetch("data.json")
         dayEl.className = "day";
 
         dayEl.innerHTML = `
-                    <span class="date">
-                        ${d.day} ${MONTHS_SHORT[d.month]} (${WEEKDAYS[d.weekday]})
-                    </span>
-                    <div class="races"></div>
-                `;
+          <span class="date">
+            ${d.day} ${MONTHS_SHORT[d.month]} (${WEEKDAYS[d.weekday]})
+          </span>
+          <div class="races"></div>
+        `;
 
         const racesEl = dayEl.querySelector(".races");
 
@@ -276,9 +299,9 @@ fetch("data.json")
           const raceEl = document.createElement("div");
           raceEl.className = "race";
           raceEl.innerHTML = `
-                        <span>${raceNames[ev.index - 1]}</span>
-                        <span>${ev.date.time}</span>
-                    `;
+            <span>${raceNames[ev.index - 1]}</span>
+            <span>${ev.date.time}</span>
+          `;
           racesEl.appendChild(raceEl);
         });
 
@@ -290,20 +313,24 @@ fetch("data.json")
       prevRaceUnix = gp.schedule["5"];
     });
 
-
-
-
-
-
-
-
     const next = getNextRace(data);
     if (next) {
       renderNextRace(next, data);
     }
 
-
+    // прокрутка к следующей гонке по центру
+    requestAnimationFrame(() => {
+      const nextRaceEl = document.querySelector(".next-race");
+      if (nextRaceEl) {
+        nextRaceEl.scrollIntoView({
+          behavior: "smooth",   // плавно (можно "auto" если без анимации)
+          block: "center"       // центр экрана
+        });
+      }
+    });
   });
+
+
 
 
 // ---------- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ----------
@@ -400,7 +427,7 @@ function renderNextRace(next, data) {
 
   nextGp.innerHTML = `
     <div class="title">
-        <span>${raceNames[next.idx - 1]} — ${d.day} ${MONTHS_SHORT[d.month]} (${WEEKDAYS[d.weekday]}) ${d.time}</span>
+        <span>${raceNames[next.idx - 1]}: ${d.day} ${MONTHS_SHORT[d.month]} (${WEEKDAYS[d.weekday]}) ${d.time}</span>
     </div>
     <div class="card">
         <div class="num">
