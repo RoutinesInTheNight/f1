@@ -383,6 +383,10 @@ html {
   /* width: 10%; */
   font-family: 'MTSans-RegularCondensed', Arial, sans-serif;
   font-size: calc(100 / 428 * 22 * var(--vw));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .num span {
