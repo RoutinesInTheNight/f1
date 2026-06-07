@@ -49,38 +49,6 @@
     },
     "4": {
         "name": {
-            "ru": "БАХРЕЙН",
-            "en": "BAHRAIN"
-        },
-        "schedule": {
-            "1": 1775820600,
-            "2": 1775833200,
-            "3": 1775910600,
-            "4": 1775923200,
-            "5": 1776006000
-        },
-        "gmt": 3,
-        "sprint_num": null,
-        "svg": "bh"
-    },
-    "5": {
-        "name": {
-            "ru": "САУД. АРАВИЯ",
-            "en": "SAUDI ARABIA"
-        },
-        "schedule": {
-            "1": 1776432600,
-            "2": 1776445200,
-            "3": 1776519000,
-            "4": 1776531600,
-            "5": 1776618000
-        },
-        "gmt": 3,
-        "sprint_num": null,
-        "svg": "sa"
-    },
-    "6": {
-        "name": {
             "ru": "МАЙАМИ",
             "en": "MIAMI"
         },
@@ -95,7 +63,7 @@
         "sprint_num": 2,
         "svg": "us"
     },
-    "7": {
+    "5": {
         "name": {
             "ru": "КАНАДА",
             "en": "CANADA"
@@ -111,7 +79,7 @@
         "sprint_num": 3,
         "svg": "ca"
     },
-    "8": {
+    "6": {
         "name": {
             "ru": "МОНАКО",
             "en": "MONACO"
@@ -127,7 +95,7 @@
         "sprint_num": null,
         "svg": "mc"
     },
-    "9": {
+    "7": {
         "name": {
             "ru": "БАРСЕЛОНА",
             "en": "BARCELONA"
@@ -143,7 +111,7 @@
         "sprint_num": null,
         "svg": "es"
     },
-    "10": {
+    "8": {
         "name": {
             "ru": "АВСТРИЯ",
             "en": "AUSTRIA"
@@ -159,7 +127,7 @@
         "sprint_num": null,
         "svg": "at"
     },
-    "11": {
+    "9": {
         "name": {
             "ru": "ВЕЛИКОБРИТАНИЯ",
             "en": "GREAT BRITAIN"
@@ -175,7 +143,7 @@
         "sprint_num": 4,
         "svg": "gb"
     },
-    "12": {
+    "10": {
         "name": {
             "ru": "БЕЛЬГИЯ",
             "en": "BELGIUM"
@@ -191,7 +159,7 @@
         "sprint_num": null,
         "svg": "be"
     },
-    "13": {
+    "11": {
         "name": {
             "ru": "ВЕНГРИЯ",
             "en": "HUNGARY"
@@ -207,7 +175,7 @@
         "sprint_num": null,
         "svg": "hu"
     },
-    "14": {
+    "12": {
         "name": {
             "ru": "НИДЕРЛАНДЫ",
             "en": "NETHERLANDS"
@@ -223,7 +191,7 @@
         "sprint_num": 5,
         "svg": "nl"
     },
-    "15": {
+    "13": {
         "name": {
             "ru": "ИТАЛИЯ",
             "en": "ITALY"
@@ -239,7 +207,7 @@
         "sprint_num": null,
         "svg": "it"
     },
-    "16": {
+    "14": {
         "name": {
             "ru": "ИСПАНИЯ",
             "en": "SPAIN"
@@ -255,7 +223,7 @@
         "sprint_num": null,
         "svg": "es"
     },
-    "17": {
+    "15": {
         "name": {
             "ru": "АЗЕРБАЙДЖАН",
             "en": "AZERBAIJAN"
@@ -271,7 +239,7 @@
         "sprint_num": null,
         "svg": "az"
     },
-    "18": {
+    "16": {
         "name": {
             "ru": "СИНГАПУР",
             "en": "SINGAPORE"
@@ -287,7 +255,7 @@
         "sprint_num": 6,
         "svg": "sg"
     },
-    "19": {
+    "17": {
         "name": {
             "ru": "США",
             "en": "UNITED STATES"
@@ -303,7 +271,7 @@
         "sprint_num": null,
         "svg": "us"
     },
-    "20": {
+    "18": {
         "name": {
             "ru": "МЕХИКО",
             "en": "MEXICO"
@@ -319,7 +287,7 @@
         "sprint_num": null,
         "svg": "mx"
     },
-    "21": {
+    "19": {
         "name": {
             "ru": "БРАЗИЛИЯ",
             "en": "BRAZIL"
@@ -335,7 +303,7 @@
         "sprint_num": null,
         "svg": "br"
     },
-    "22": {
+    "20": {
         "name": {
             "ru": "ЛАС-ВЕГАС",
             "en": "LAS VEGAS"
@@ -351,7 +319,7 @@
         "sprint_num": null,
         "svg": "us"
     },
-    "23": {
+    "21": {
         "name": {
             "ru": "КАТАР",
             "en": "QATAR"
@@ -367,7 +335,7 @@
         "sprint_num": null,
         "svg": "qa"
     },
-    "24": {
+    "22": {
         "name": {
             "ru": "АБУ-ДАБИ",
             "en": "ABU DHABI"
