@@ -241,6 +241,22 @@
     },
     "16": {
         "name": {
+            "ru": "БАХРЕЙН",
+            "en": "BAHRAIN"
+        },
+        "schedule": {
+            "1": 1790915400,
+            "2": 1790928000,
+            "3": 1791001800,
+            "4": 1791014400,
+            "5": 1791097200
+        },
+        "gmt": 4,
+        "sprint_num": null,
+        "svg": "bh"
+    },
+    "17": {
+        "name": {
             "ru": "СИНГАПУР",
             "en": "SINGAPORE"
         },
@@ -255,7 +271,7 @@
         "sprint_num": 6,
         "svg": "sg"
     },
-    "17": {
+    "18": {
         "name": {
             "ru": "США",
             "en": "UNITED STATES"
@@ -271,7 +287,7 @@
         "sprint_num": null,
         "svg": "us"
     },
-    "18": {
+    "19": {
         "name": {
             "ru": "МЕХИКО",
             "en": "MEXICO"
@@ -287,7 +303,7 @@
         "sprint_num": null,
         "svg": "mx"
     },
-    "19": {
+    "20": {
         "name": {
             "ru": "БРАЗИЛИЯ",
             "en": "BRAZIL"
@@ -303,7 +319,7 @@
         "sprint_num": null,
         "svg": "br"
     },
-    "20": {
+    "21": {
         "name": {
             "ru": "ЛАС-ВЕГАС",
             "en": "LAS VEGAS"
@@ -319,7 +335,7 @@
         "sprint_num": null,
         "svg": "us"
     },
-    "21": {
+    "22": {
         "name": {
             "ru": "КАТАР",
             "en": "QATAR"
@@ -335,7 +351,7 @@
         "sprint_num": null,
         "svg": "qa"
     },
-    "22": {
+    "23": {
         "name": {
             "ru": "АБУ-ДАБИ",
             "en": "ABU DHABI"
